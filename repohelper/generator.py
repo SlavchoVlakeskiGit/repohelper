@@ -24,6 +24,8 @@ def create_project(
         print("\nFiles:")
         for file_entry in structure["files"]:
             print(f"- {project_path / file_entry['path']}")
+
+        print("\nNothing was written.")
         return
 
     created_directories: list[Path] = []
@@ -46,12 +48,12 @@ def create_project(
 
         if full_file_path.exists():
             if force:
-                full_file_path.write_text(file_content, encoding="utf-8")
+                full_file_path.write_text(file_content, encoding="utf-8", newline="\n")
                 overwritten_files.append(full_file_path)
             else:
                 continue
         else:
-            full_file_path.write_text(file_content, encoding="utf-8")
+            full_file_path.write_text(file_content, encoding="utf-8", newline="\n")
             created_files.append(full_file_path)
 
     print("\nProject created")
@@ -78,3 +80,8 @@ def create_project(
             print(f"- {file_path}")
     else:
         print("- none")
+
+    print("\nNext steps:")
+    print(f"1. cd {project_path.name}")
+    print("2. update the README")
+    print("3. start building the actual project")
