@@ -5,7 +5,11 @@ from repohelper.constants import APP_NAME
 from repohelper.generator import create_project_placeholder
 from repohelper.profiles import get_profiles
 from repohelper.utils import print_header, print_kv
-from repohelper.validators import validate_project_name
+from repohelper.validators import (
+    validate_profile_name,
+    validate_project_name,
+    validate_project_target,
+)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -48,7 +52,7 @@ def build_parser() -> argparse.ArgumentParser:
     create_parser.add_argument(
         "--force",
         action="store_true",
-        help="Allow overwrite behavior in later versions.",
+        help="Allow overwrite if target folder already exists.",
     )
 
     return parser
@@ -83,7 +87,37 @@ def handle_create(args: argparse.Namespace) -> None:
     print_kv("Dry run", "yes" if args.dry_run else "no")
     print_kv("Force", "yes" if args.force else "no")
 
-    create_project_placeholder(args.project_name, args.profile)
+    name_ok, name_message = validate_project_name(args.project_name)
+    if not name_ok:
+        print_kv("Status", "failed")
+        print_kv("Reason", name_message)
+        return
+
+    profile_ok, profile_message = validate_profile_name(args.profile)
+    if not profile_ok:
+        print_kv("Status", "failed")
+        print_kv("Reason", profile_message)
+        return
+
+    target_ok, target_message, project_path = validate_project_target(
+        project_name=args.project_name,
+        path_value=args.path,
+        force=args.force,
+    )
+    if not target_ok or project_path is None:
+        print_kv("Status", "failed")
+        print_kv("Reason", target_message)
+        return
+
+    print_kv("Status", "ready")
+    print_kv("Target", str(project_path))
+
+    create_project_placeholder(
+        project_name=args.project_name,
+        profile_name=args.profile,
+        project_path=project_path,
+        dry_run=args.dry_run,
+    )
 
 
 def main() -> None:
