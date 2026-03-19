@@ -2,7 +2,7 @@ import argparse
 
 from repohelper import __version__
 from repohelper.constants import APP_NAME
-from repohelper.generator import create_project_placeholder
+from repohelper.generator import create_project
 from repohelper.profiles import get_profiles
 from repohelper.utils import print_header, print_kv
 from repohelper.validators import (
@@ -112,11 +112,12 @@ def handle_create(args: argparse.Namespace) -> None:
     print_kv("Status", "ready")
     print_kv("Target", str(project_path))
 
-    create_project_placeholder(
+    create_project(
         project_name=args.project_name,
         profile_name=args.profile,
         project_path=project_path,
         dry_run=args.dry_run,
+        force=args.force,
     )
 
 
