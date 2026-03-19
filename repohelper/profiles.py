@@ -122,16 +122,23 @@ def build_profile_structure(profile_name: str, project_name: str) -> dict[str, l
 def build_generated_readme(project_name: str, profile_name: str) -> str:
     return f"""# {project_name}
 
-Small starter repo created with repohelper.
+Starter repo created with repohelper.
 
 ## Profile
 
 `{profile_name}`
 
-## Notes
+## Getting started
 
-This is just a clean starting point.
-Update this README once the real project takes shape.
+This repo was created as a clean starting point.
+Update this README once the real project starts taking shape.
+
+## Next things to do
+
+- describe what the project does
+- add setup steps
+- note any dependencies or requirements
+- replace the placeholder code with real logic
 """
 
 
@@ -221,5 +228,5 @@ def build_java_main_file(project_name: str) -> str:
 def build_java_notes_file() -> str:
     return """# Notes
 
-Use this file for setup notes, ideas, or small reminders while building.
+Use this file for setup notes, ideas, or reminders while building.
 """

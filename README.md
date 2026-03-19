@@ -1,30 +1,39 @@
 # repohelper
 
-A small Python CLI I built to make it faster to start clean side projects, practice repos, and portfolio projects.
+A small Python CLI I built to speed up the boring part of starting a new repo.
 
-The main idea is simple: when I start a small repo, I usually end up recreating the same folders, starter files, and placeholders. This tool saves that setup time without trying to generate a full app or replace bigger tools.
+I made it for the kind of projects I start often: side tools, practice apps, and portfolio repos. Instead of creating the same folders and starter files by hand every time, I can run one command and get a clean starting point.
 
-## What it does
+`repohelper` is intentionally small. It is not trying to be a framework generator or replace bigger scaffolding tools. It just helps set up simple repos with a few opinionated defaults.
 
-`repohelper` creates small starter repos using a few opinionated profiles.
+## What it can do
 
-Current profiles:
-- `python-tool`
-- `python-app`
-- `java-console`
-
-It can:
-- list available profiles
+- list the available profiles
 - check whether a project name looks valid
-- preview what it would create with `--dry-run`
-- generate folders and starter files
+- preview output with `--dry-run`
+- create folders and starter files
 - avoid overwriting existing folders unless `--force` is used
+
+## Profiles
+
+### `python-tool`
+A small Python utility or CLI-style repo.
+
+### `python-app`
+A simple Python project with `src/` and `tests/`.
+
+### `java-console`
+A basic Java console project.
 
 ## Why I built it
 
-I wanted a small utility for my own workflow.
+Most of my small repos start the same way:
+- a README
+- a `.gitignore`
+- a basic folder layout
+- a couple of starter files
 
-When starting practice projects or portfolio repos, I kept repeating the same setup steps by hand. I did not want a full scaffolding engine. I just wanted something small that gives me a clean starting point.
+That setup is not hard, but it is repetitive. I wanted a small tool that handles that part and gets me to the actual project faster.
 
 ## Example commands
 
@@ -34,3 +43,41 @@ python main.py profiles
 python main.py check-name expense-tracker
 python main.py create expense-tracker --profile python-app --dry-run
 python main.py create expense-tracker --profile python-app
+```
+
+## Example output
+
+```bash
+python main.py create sample-tool --profile python-tool --dry-run
+```
+
+This previews the project folder, directories, and files before anything is written.
+
+## Project structure
+
+```text
+repohelper/
+├── README.md
+├── requirements.txt
+├── pytest.ini
+├── .gitignore
+├── main.py
+├── repohelper/
+│   ├── __init__.py
+│   ├── cli.py
+│   ├── constants.py
+│   ├── generator.py
+│   ├── profiles.py
+│   ├── utils.py
+│   └── validators.py
+└── tests/
+    ├── __init__.py
+    ├── test_profiles.py
+    └── test_validators.py
+```
+
+## Notes
+
+This project is meant to stay narrow and useful.
+
+It does not try to support every language, framework, or project type. The goal is just to make small repo setup faster, cleaner, and more consistent.
