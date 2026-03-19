@@ -6,7 +6,7 @@ The goal is simple: when I start a small repo, I usually end up recreating the s
 
 ## Current status
 
-Early version. The CLI structure is in place and the basic commands are being built step by step.
+Early version. The CLI structure is in place and the first profile definitions are added.
 
 ## Planned v1 scope
 
@@ -16,7 +16,7 @@ Early version. The CLI structure is in place and the basic commands are being bu
 - support dry-run mode
 - avoid overwriting existing folders by default
 
-## Planned profiles
+## Profiles
 
 - `python-tool`
 - `python-app`
@@ -28,7 +28,4 @@ Early version. The CLI structure is in place and the basic commands are being bu
 python main.py about
 python main.py profiles
 python main.py check-name my-project
-python main.py create my-project --profile python-tool
-
-### File: `requirements.txt`
-```text
+python main.py create my-project --profile python-tool --dry-run
