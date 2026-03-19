@@ -4,7 +4,7 @@ A small Python CLI I built to speed up the boring part of starting a new repo.
 
 I made it for the kind of projects I start often: side tools, practice apps, and portfolio repos. Instead of creating the same folders and starter files by hand every time, I can run one command and get a clean starting point.
 
-`repohelper` is intentionally small. It is not trying to be a framework generator or replace bigger scaffolding tools. It just helps set up simple repos with a few opinionated defaults.
+Small Python CLI for setting up clean starter repos for side projects and portfolio work.
 
 ## What it can do
 
