@@ -1,10 +1,8 @@
-# repohelper
+# RepoHelper
 
-A small Python CLI I built to speed up the boring part of starting a new repo.
+RepoHelper is a small Python CLI I made to speed up the repetitive part of starting new repos.
 
-I made it for the kind of projects I start often: side tools, practice apps, and portfolio repos. Instead of creating the same folders and starter files by hand every time, I can run one command and get a clean starting point.
-
-Small Python CLI for setting up clean starter repos for side projects and portfolio work.
+A lot of my smaller projects begin the same way: a README, a `.gitignore`, a basic folder layout, and a couple of starter files. None of that is hard, but doing it over and over gets old fast, so I ended up building a small tool to handle that part instead of repeating it every time.
 
 ## What it can do
 
@@ -27,13 +25,9 @@ A basic Java console project.
 
 ## Why I built it
 
-Most of my small repos start the same way:
-- a README
-- a `.gitignore`
-- a basic folder layout
-- a couple of starter files
+This was mainly a workflow tool for myself. I did not want a big scaffold generator with endless options. I wanted something opinionated and small enough to understand in one sitting.
 
-That setup is not hard, but it is repetitive. I wanted a small tool that handles that part and gets me to the actual project faster.
+One thing I liked while building it was adding `--dry-run`, because it made it much easier to check the output before writing anything to disk.
 
 ## Example commands
 
@@ -51,33 +45,17 @@ python main.py create expense-tracker --profile python-app
 python main.py create sample-tool --profile python-tool --dry-run
 ```
 
-This previews the project folder, directories, and files before anything is written.
-
-## Project structure
-
-```text
-repohelper/
-├── README.md
-├── requirements.txt
-├── pytest.ini
-├── .gitignore
-├── main.py
-├── repohelper/
-│   ├── __init__.py
-│   ├── cli.py
-│   ├── constants.py
-│   ├── generator.py
-│   ├── profiles.py
-│   ├── utils.py
-│   └── validators.py
-└── tests/
-    ├── __init__.py
-    ├── test_profiles.py
-    └── test_validators.py
-```
+That previews the folders and files before anything is actually created.
 
 ## Notes
 
-This project is meant to stay narrow and useful.
+I kept the scope narrow on purpose. The goal here was not to clone a full template engine. It was just to remove a bit of setup friction when starting small repos.
 
-It does not try to support every language, framework, or project type. The goal is just to make small repo setup faster, cleaner, and more consistent.
+## Possible next improvements
+
+- custom templates
+- interactive prompts
+- optional Git initialization
+- optional license selection
+
+It’s one of those small tools that’s not impressive on its own, but saves time every time I start something new.
